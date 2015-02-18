@@ -1,6 +1,9 @@
 module.exports = function (options) {
   options = options || {};
-  options.port = options.port || 9999;
+  if (!options.server) {
+    options.port = options.port || 9999;
+    options.host = options.host || '0.0.0.0';
+  }
   var WebSocketServer = require('ws').Server;
   var wss = new WebSocketServer(options);
   var lastActiveSlide = 0;
