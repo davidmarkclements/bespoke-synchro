@@ -1,6 +1,6 @@
 {
   "name": "bespoke-synchro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Synchronize keypresses across Bespoke.js presentations",
   "homepage": "https://github.com/davidmarkclements/bespoke-synchro",
   "bugs": "https://github.com/davidmarkclements/bespoke-synchro/issues",
