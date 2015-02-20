@@ -1,7 +1,7 @@
 {
   "name": "bespoke-synchro",
-  "version": "1.0.1",
-  "description": "Synchronize keypresses across Bespoke.js presentations",
+  "version": "1.0.2",
+  "description": "Synchronize slide changing across browser windows and networks",
   "homepage": "https://github.com/davidmarkclements/bespoke-synchro",
   "bugs": "https://github.com/davidmarkclements/bespoke-synchro/issues",
   "author": {
