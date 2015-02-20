@@ -1,6 +1,6 @@
 {
   "name": "bespoke-synchro",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Synchronize slide changing across browser windows and networks",
   "homepage": "https://github.com/davidmarkclements/bespoke-synchro",
   "bugs": "https://github.com/davidmarkclements/bespoke-synchro/issues",
