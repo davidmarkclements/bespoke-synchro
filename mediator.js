@@ -1,3 +1,8 @@
+var url = require('url');
+function local(origin) {
+  var hostname = url.parse(origin).hostname;
+  return hostname === 'localhost' || hostname === '127.0.0.1';
+}
 module.exports = function (options) {
   options = options || {};
   if (!options.server) {
@@ -8,12 +13,14 @@ module.exports = function (options) {
   var wss = new WebSocketServer(options);
   var lastActiveSlide = 0;
   wss.on('connection', function (ws) {
-    if (wss.clients.indexOf(ws) > 0) {
+    var origin = ws.upgradeReq.headers.origin;
+    if (!local(origin)) {
       ws.send(lastActiveSlide);
     }
-
+    
     ws.on('message', function (activeSlide) {
-      if (wss.clients.indexOf(ws) > 1) { return; }
+      if (!local(origin)) { return; }
+      
       lastActiveSlide = activeSlide;
       wss.clients.filter(function (s) {
         return s !== ws;
