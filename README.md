@@ -30,8 +30,7 @@ var bespoke = require('bespoke'),
 bespoke.from('article', [
   synchro({
     port: 9999,
-    url: 'ws://' + location.href,
-    control: <internal function>
+    url: 'ws://' + location.href
   })
 ]);
 ```
@@ -39,6 +38,48 @@ bespoke.from('article', [
 The bespoke-synchro plugin relies on a WebSocket mediator
 to interface between presentation instances (e.g. between
 each loaded presentation in a browser).
+
+
+### Enable/Disable
+
+There may be certain circumstances where controlling the ability
+to sending and/or receive synchronization packets is desirable. 
+The return value of `synchro` comes with `disable`, `enable`
+and `toggle` methods:
+
+```javascript
+bespoke.from('article', [
+  synchro = synchro({
+    port: 9999,
+    url: 'ws://' + location.href
+  })
+]);
+
+document.addEventListener('keydown', function(e) {
+  if (e.which === 's'.charCodeAt(0)) {
+    synchro.toggle();
+  }
+});
+```
+
+Each of the methods (`disable`, `enable` and `toggle`)
+have `rx` (e.g. receive) and `tx` (e.g. transmit), submethods.
+Use these to control only one side of the interface
+
+
+```javascript
+if (slave) {
+  synchro.disable.tx();
+}
+if (master) {
+  synchro.disable.rx();
+}
+
+```
+
+
+
+## Mediator
 
 In node (options shown are defaults)
 
